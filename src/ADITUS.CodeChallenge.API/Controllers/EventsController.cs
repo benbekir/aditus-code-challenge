@@ -1,4 +1,4 @@
-using ADITUS.CodeChallenge.API.Domain;
+using ADITUS.CodeChallenge.API.Domain.Events;
 using ADITUS.CodeChallenge.API.Services;
 using Microsoft.AspNetCore.Mvc;
 

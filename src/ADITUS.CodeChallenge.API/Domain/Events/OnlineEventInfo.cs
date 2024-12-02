@@ -1,5 +1,8 @@
-﻿namespace ADITUS.CodeChallenge.API.Domain;
+﻿namespace ADITUS.CodeChallenge.API.Domain.Events;
 
+/// <summary>
+/// Optional information about an online event.
+/// </summary>
 public record OnlineEventInfo
 {
   public int Attendees { get; init; }

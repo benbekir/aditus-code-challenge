@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ADITUS.CodeChallenge.API.Domain;
+namespace ADITUS.CodeChallenge.API.Domain.Events;
 
 [Flags]
 public enum EventType

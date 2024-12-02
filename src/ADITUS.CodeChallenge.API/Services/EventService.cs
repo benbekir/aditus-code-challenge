@@ -1,4 +1,4 @@
-using ADITUS.CodeChallenge.API.Domain;
+using ADITUS.CodeChallenge.API.Domain.Events;
 
 namespace ADITUS.CodeChallenge.API.Services;
 
@@ -48,24 +48,27 @@ public class EventService : IEventService
       {
         Id = Guid.Parse("3a17b294-8716-448c-94db-ebf9bf53f1ce"),
         Year = 2023,
-        Name = "ADITUS Code Challenge 2023",
-        StartDate = new DateTime(2023, 1, 1),
-        EndDate = new DateTime(2023, 1, 23)
+        Name = "ADITUS Code Challenge 2025",
+        StartDate = new DateTime(2025, 1, 1),
+        EndDate = new DateTime(2025, 1, 23)
       }
     };
   }
 
+  // <inheritdoc/>
   public Task<Event?> GetEvent(Guid id)
   {
     var @event = m_Events.FirstOrDefault(e => e.Id == id);
     return Task.FromResult(@event);
   }
 
+  // <inheritdoc/>
   public Task<IList<Event>> GetEvents()
   {
     return Task.FromResult(m_Events);
   }
 
+  // <inheritdoc/>
   public async Task<OnlineEventInfo> GetOnlineEventInfoAsync(Guid eventId)
   {
     var response = await m_HttpClient.GetAsync($"https://codechallenge-statistics.azurewebsites.net/api/online-statistics/{eventId}");
@@ -74,6 +77,7 @@ public class EventService : IEventService
       ?? throw new InvalidDataException("Failed to deserialize the data.");
   }
 
+  // <inheritdoc/>
   public async Task<OnSiteEventInfo> GetOnSiteEventInfoAsync(Guid eventId)
   {
     var response = await m_HttpClient.GetAsync($"https://codechallenge-statistics.azurewebsites.net/api/onsite-statistics/{eventId}");

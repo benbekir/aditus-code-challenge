@@ -5,14 +5,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddJsonOptions(x =>
 {
-    x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+  x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
 
 builder.Services.AddSingleton<IEventService, EventService>();
 
 var app = builder.Build();
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
