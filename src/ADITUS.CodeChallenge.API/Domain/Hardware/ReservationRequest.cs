@@ -3,7 +3,7 @@
 namespace ADITUS.CodeChallenge.API.Domain.Hardware;
 
 /// <summary>
-/// A hardware reservation request for one or multiple components over a specified time span.
+/// A hardware reservation request for one or multiple components for the duration of an event.
 /// </summary>
 public record ReservationRequest
 {
@@ -18,19 +18,9 @@ public record ReservationRequest
   public required Event Event { get; init; }
 
   /// <summary>
-  /// Whether the request is granted.
+  /// Whether the request is accepted.
   /// </summary>
-  public bool IsGranted { get; set; }
-
-  /// <summary>
-  /// Start of the reservation.
-  /// </summary>
-  public DateTime StartOfReservation { get; init; }
-
-  /// <summary>
-  /// End of the reservation.
-  /// </summary>
-  public DateTime EndOfReservation { get; init; }
+  public bool IsAccepted { get; set; }
 
   /// <summary>
   /// The requested hardware components.

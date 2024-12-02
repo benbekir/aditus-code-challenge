@@ -3,9 +3,9 @@
 public class ReservationStatusResponseDto
 {
   /// <summary>
-  /// Whether the request is reservation request is granted.
+  /// Whether the request is reservation request is accepted.
   /// </summary>
-  public bool IsRequestGranted { get; set; }
+  public bool IsRequestAccepted { get; set; }
 
   /// <summary>
   /// The name and quantity of the requested hardware components.

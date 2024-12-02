@@ -109,16 +109,14 @@ public class HardwareReservationController : ControllerBase
       {
         Id = @event.Id,
         Event = @event,
-        StartOfReservation = @event.StartDate.AddDays(-1),
-        EndOfReservation = @event.EndDate.AddDays(1),
         RequestedHardware = availableHardware
       };
       HardwareData.Reservations.Add(reservationRequest);
-      foreach (var hardwareComponent in availableHardware)
+      var response = new ReservationResponseDto()
       {
-        hardwareComponent.Reservations.Add(reservationRequest);
-      }
-      return Ok(reservationRequest.Id);
+        Id = reservationRequest.Id
+      };
+      return Ok(response);
     }
   }
 
@@ -133,7 +131,7 @@ public class HardwareReservationController : ControllerBase
     }
     var response = new ReservationStatusResponseDto()
     {
-      IsRequestGranted = reservation.IsGranted,
+      IsRequestAccepted = reservation.IsAccepted,
       RequestedHardwareComponents = reservation.RequestedHardware.GroupBy(x => x.ToString()).ToDictionary(x => x.Key!, x => x.Count())
     };
     return Ok(response);
